@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_GUID: cbe81c7ae83a04146be1f0533ff3232c
+  m_SerializeEntries:
+  - m_GUID: 2a5afd37a7c264c3d9ab8a711d7305a5
+    m_Address: ParticleSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 374761a9cc8694efa95f07a4cd62e1af
+    m_Address: ShadowSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49e5be9dcc7e240c8b97d34c3e59daa9
+    m_Address: AudioSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7445a8c82e63e4f63b110a55f9fa83cb
+    m_Address: ParticlePoolSystem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a0441d7c49bc84fd0b3cc6bb003cb1f9
+    m_Address: AudioSystem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b43ff358eb5424e55932f745faa11396
+    m_Address: OverlayNotificationSystem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc4b73bd237ef47c4a736a18d3ebbc8d
+    m_Address: LevelSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd68bffb4492d446b98a5ac36d738ceb
+    m_Address: EventDispatcher
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec065d4ed88ec4b7983c802d5c039189
+    m_Address: ObjectPoolingSystem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: edf7e74ba43e44e378050e3550dc6271
+    m_Address: UIFadeSystem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f73ce0a7fa5e94d00b6b3dcad7cfb5fb
+    m_Address: InAppSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff8b82eacb783457e902207c9fe58cc5
+    m_Address: PoolSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8e1a0463ff68d46b3bbe2c1a8459eb6f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cb41921d4e54648e9a17c6d5d7017195, type: 2}
+    - {fileID: 11400000, guid: 1fcc7d9c959654ba5a7bdf3701ffcb3a, type: 2}
