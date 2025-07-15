@@ -30,8 +30,6 @@ namespace Core.UI
             _inputService.Clicked -= IInputService_Clicked;
         }
 
-        protected override void UpdateView() { }
-
         private void IInputService_Clicked()
         {
             if (!_levelFlowController.IsStarted)

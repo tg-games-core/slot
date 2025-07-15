@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e28259ce4f432ba3ee3d6d1fa9342e, type: 3}
+  m_Name: PlinkoSettings
+  m_EditorClassIdentifier: 
+  <StartBalance>k__BackingField: 1000
+  <GameCost>k__BackingField: 100
+  <MultiplierPerHit>k__BackingField: 0.25
+  <MultiplierPenaltyOnDiceLoss>k__BackingField: 0.5

@@ -3,6 +3,9 @@ using System.Collections;
 
 public class CircleController : MonoBehaviour
 {
+    [Header("Настройки кругов")]
+    public float circleImpulseForce = 10f;
+    
     [Header("Настройки круга")]
     public float impulseForce = 10f;
     public float bounceForce = 5f;
@@ -96,7 +99,15 @@ public class CircleController : MonoBehaviour
             // Уведомляем менеджер игры
             if (gameManager != null)
             {
-                gameManager.OnCircleHit(gameObject, collision.gameObject);
+                //gameManager.OnCircleHit(gameObject, collision.gameObject);
+
+                var dice = collision.gameObject;
+                Rigidbody2D diceRb = dice.GetComponent<Rigidbody2D>();
+                if (diceRb != null)
+                {
+                    Vector2 direction = (dice.transform.position - gameObject.transform.position).normalized;
+                    diceRb.AddForce(direction * circleImpulseForce, ForceMode2D.Impulse);
+                }
             }
         }
     }

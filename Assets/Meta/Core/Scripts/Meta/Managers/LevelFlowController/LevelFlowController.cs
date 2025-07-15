@@ -117,7 +117,7 @@ namespace Core
             
             callback?.Invoke();
             
-            _uiSystem.ShowWindow<MainWindow>();
+            _uiSystem.ShowWindow<GameWindow>();
         }
 
         public void InjectUISystem(UISystem uiSystem)

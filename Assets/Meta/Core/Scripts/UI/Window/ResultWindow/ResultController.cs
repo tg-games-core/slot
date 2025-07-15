@@ -27,8 +27,6 @@ namespace Core.UI
             _view.OnContinueClicked -= View_OnContinueClicked;
         }
 
-        protected override void UpdateView() { }
-
         private void View_OnContinueClicked()
         {
             _levelFlowController?.Load();

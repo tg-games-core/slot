@@ -47,7 +47,6 @@ namespace Core.UI.MVC
             Bind();
             
             _view.Show();
-            UpdateView();
             _view.Refresh();
         }
 
@@ -102,7 +101,6 @@ namespace Core.UI.MVC
         
         protected virtual void OnFocusRestored() { }
         protected virtual void OnFocusLost() { }
-        protected virtual void UpdateView() { }
         protected virtual void OnShowing() { }
         protected virtual void OnShown() { }
         protected virtual void OnHiding() { }

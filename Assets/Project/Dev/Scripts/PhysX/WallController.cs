@@ -1,3 +1,4 @@
+using Project.Bounce;
 using UnityEngine;
 
 public class WallController : MonoBehaviour
@@ -89,7 +90,7 @@ public class WallController : MonoBehaviour
         // Если стена разрушительная, уничтожаем кубик
         if (isDestructive)
         {
-            DiceController diceController = collision.gameObject.GetComponent<DiceController>();
+            var diceController = collision.gameObject.GetComponent<PlinkoDice>();
             if (diceController != null)
             {
                 diceController.DestroyDice();

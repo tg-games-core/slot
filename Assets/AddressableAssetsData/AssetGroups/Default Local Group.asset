@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: cbe81c7ae83a04146be1f0533ff3232c
   m_SerializeEntries:
+  - m_GUID: 06c514dab2f4c4115be9c7f96357ec86
+    m_Address: PlinkoSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2a5afd37a7c264c3d9ab8a711d7305a5
     m_Address: ParticleSettings
     m_ReadOnly: 0
@@ -50,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce2d08b8870f84947bef75c02b9990fc
+    m_Address: BouncingItemSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dd68bffb4492d446b98a5ac36d738ceb
     m_Address: EventDispatcher
     m_ReadOnly: 0
@@ -67,6 +77,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f73ce0a7fa5e94d00b6b3dcad7cfb5fb
     m_Address: InAppSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff338d69667be4b7abafd4513e50be33
+    m_Address: DiceSettings
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

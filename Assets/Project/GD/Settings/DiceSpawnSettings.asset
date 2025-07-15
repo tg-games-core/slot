@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02ae8a03f914d4fa4df872ed4cda9a4, type: 3}
+  m_Name: DiceSpawnSettings
+  m_EditorClassIdentifier: 
+  <Dice>k__BackingField: {fileID: -1332213916794807366, guid: ba5dae16c7e8f4b668d4fc533fdc756e, type: 3}
+  <DiceCount>k__BackingField: 2
+  <SpawnInterval>k__BackingField: 2
