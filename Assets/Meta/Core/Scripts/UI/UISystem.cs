@@ -39,6 +39,11 @@ namespace Core.UI
             get => _sharedData;
         }
 
+        public UniTask TransitionTask
+        {
+            get; private set;
+        }
+
         private void Awake()
         {
             InitializeViews();
@@ -78,11 +83,11 @@ namespace Core.UI
 
             if (!_isViewTransitionInProgress)
             {
-                ProcessViewTransition().Forget();
+                TransitionTask = ProcessViewTransition();
             }
         }
         
-        private async UniTaskVoid ProcessViewTransition()
+        private async UniTask ProcessViewTransition()
         {
             while (_pendingControllers.Count > 0)
             {
@@ -106,7 +111,7 @@ namespace Core.UI
                 _controllerStack.Push(controller);
 				_currentController?.LostFocus();
                 _currentController = controller;
-                controller.Show();
+                await controller.Show();
                 _isViewTransitionInProgress = false;
             }
         }
@@ -125,7 +130,7 @@ namespace Core.UI
             }
         }
         
-        public async void NavigateBack()
+        public async UniTask NavigateBack()
         {
             if (_controllerStack.Count > 0)
             {

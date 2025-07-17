@@ -9,7 +9,7 @@ namespace Core.UI.MVC.Interface
         
         void Build(IView view, IModel model);
         void Initialize();
-        void Show();
+        UniTask Show();
         void Bind();
         void RestoreFocus();
         void LostFocus();

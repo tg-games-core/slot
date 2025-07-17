@@ -42,11 +42,11 @@ namespace Core.UI.MVC
             _view.Preload();
         }
 
-        void IController.Show()
+        async UniTask IController.Show()
         {
             Bind();
             
-            _view.Show();
+            await _view.Show();
             _view.Refresh();
         }
 

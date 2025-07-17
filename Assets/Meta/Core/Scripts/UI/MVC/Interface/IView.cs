@@ -17,7 +17,7 @@ namespace Core.UI.MVC.Interface
         void Preload();
         void Enable();
         void Disable();
-        UniTaskVoid Show();
+        UniTask Show();
         void Refresh();
         UniTask Hide(bool isAnimationNeeded);
     }

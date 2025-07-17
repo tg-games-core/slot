@@ -75,7 +75,7 @@ namespace Core.UI
             return _controller;
         }
 
-        async UniTaskVoid IView.Show()
+        async UniTask IView.Show()
         {
             gameObject.SetActive(true);
             Enable();
