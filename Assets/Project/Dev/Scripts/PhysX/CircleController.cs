@@ -23,13 +23,20 @@ public class CircleController : MonoBehaviour
     public Transform childToAnimate;
     public AnimationCurve scaleCurve = AnimationCurve.EaseInOut(0, 0.95f, 1, 1f);
     
+    [Header("Анимация качания")]
+    public bool enableSwingAnimation = true;
+    public float swingSpeed = 2f;
+    public float swingAngle = 8f;
+    
     private SpriteRenderer spriteRenderer;
     private PhysxGameManager gameManager;
     private float colorChangeTimer = 0f;
     private bool isHit = false;
     private CircleCollider2D circleCollider;
     private Vector3 originalChildScale;
+    private Vector3 originalChildRotation;
     private Coroutine scaleAnimationCoroutine;
+    private Coroutine swingAnimationCoroutine;
     
     void Start()
     {
@@ -57,16 +64,26 @@ public class CircleController : MonoBehaviour
             spriteRenderer.color = normalColor;
         }
         
-        // Сохраняем оригинальный масштаб дочернего объекта
+        // Сохраняем оригинальный масштаб и поворот дочернего объекта
         if (childToAnimate != null)
         {
             originalChildScale = childToAnimate.localScale;
+            originalChildRotation = childToAnimate.localEulerAngles;
         }
         else
         {
             // Если дочерний объект не назначен, используем сам объект
             childToAnimate = transform;
             originalChildScale = Vector3.one;
+            originalChildRotation = Vector3.zero;
+        }
+        
+
+        
+        // Запускаем анимацию качания
+        if (enableSwingAnimation)
+        {
+            StartSwingAnimation();
         }
     }
     
@@ -193,6 +210,45 @@ public class CircleController : MonoBehaviour
         }
         
         scaleAnimationCoroutine = null;
+    }
+    
+    void StartSwingAnimation()
+    {
+        if (swingAnimationCoroutine != null)
+        {
+            StopCoroutine(swingAnimationCoroutine);
+        }
+        
+        swingAnimationCoroutine = StartCoroutine(SwingAnimation());
+    }
+    
+    IEnumerator SwingAnimation()
+    {
+        float time = 0f;
+        
+        while (enableSwingAnimation)
+        {
+            // Используем синус для плавного качания от -8 до 8 градусов
+            float zRotation = Mathf.Sin(time * swingSpeed) * swingAngle;
+            
+            if (childToAnimate != null)
+            {
+                Vector3 newRotation = originalChildRotation;
+                newRotation.z = zRotation;
+                childToAnimate.localEulerAngles = newRotation;
+            }
+            
+            time += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Возвращаем к исходному повороту при остановке
+        if (childToAnimate != null)
+        {
+            childToAnimate.localEulerAngles = originalChildRotation;
+        }
+        
+        swingAnimationCoroutine = null;
     }
     
     // Визуализация в редакторе
