@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Autoplay.Interfaces;
 
@@ -15,11 +16,11 @@ namespace Project.Autoplay.Implementations
             _innerCommand = innerCommand;
         }
 
-        async UniTask ICommand.Execute()
+        async UniTask ICommand.Execute(CancellationToken token)
         {
             if (_condition())
             {
-                await _innerCommand.Execute();
+                await _innerCommand.Execute(token);
             }
         }
     }

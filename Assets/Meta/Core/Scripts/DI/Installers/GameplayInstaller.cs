@@ -1,3 +1,4 @@
+using Project.Autoplay;
 using Project.Bounce.Containers;
 using Project.Plinko;
 using Project.Score;
@@ -22,6 +23,7 @@ namespace Core
             builder.Register<PlinkoService>(Lifetime.Scoped).AsImplementedInterfaces();
             builder.Register<ScoreService>(Lifetime.Scoped).AsImplementedInterfaces();
             builder.Register<SceneBootstrapper>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<AutoplayService>(Lifetime.Scoped).AsImplementedInterfaces();
         }
     }
 }

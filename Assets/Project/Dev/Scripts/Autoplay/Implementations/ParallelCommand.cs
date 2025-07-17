@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Autoplay.Interfaces;
 
@@ -14,9 +15,9 @@ namespace Project.Autoplay.Implementations
             _commands = commands.ToList();
         }
 
-        async UniTask ICommand.Execute()
+        async UniTask ICommand.Execute(CancellationToken token)
         {
-            var tasks = _commands.Select(cmd => cmd.Execute());
+            var tasks = _commands.Select(command => command.Execute(token));
             
             await UniTask.WhenAll(tasks);
         }

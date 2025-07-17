@@ -1,31 +1,32 @@
 using Core.Services;
+using Core.UI;
 using Project.Autoplay.Implementations;
 using Project.Autoplay.Interfaces;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 namespace Project.Autoplay
 {
-    public class AutoplayService : IAutoplayService, IInitializable
+    public class AutoplayService : IAutoplayService
     {
-        private CommandQueue _commandQueue;
+        private readonly CommandQueue _commandQueue = new();
+        
         private IRuntimeRegistry _runtimeRegistry;
+        private UISystem _uiSystem;
 
         [Inject]
-        private void Construct(IRuntimeRegistry runtimeRegistry)
+        private void Construct(IRuntimeRegistry runtimeRegistry, UISystem uiSystem)
         {
             _runtimeRegistry = runtimeRegistry;
-        }
-        
-        void IInitializable.Initialize()
-        {
-            _commandQueue = new CommandQueue();
+            _uiSystem = uiSystem;
         }
 
         void IAutoplayService.StartAutoplay()
         {
-            _commandQueue.Enqueue(new Command(() => { Debug.Log("Spend Money!");}));
+            var command = new Command(() => { Debug.Log("Spend Money!"); });
+            var uiCommand = new UICommand<ResultWindow>(_uiSystem, command, null);
+            _commandQueue.Enqueue(uiCommand);
+            _commandQueue.Run();
         }
     }
 }

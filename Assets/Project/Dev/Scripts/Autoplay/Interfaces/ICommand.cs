@@ -1,9 +1,10 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 
 namespace Project.Autoplay.Interfaces
 {
     public interface ICommand
     {
-        UniTask Execute();
+        UniTask Execute(CancellationToken token);
     }
 }

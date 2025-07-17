@@ -39,11 +39,6 @@ namespace Core.UI
             get => _sharedData;
         }
 
-        public UniTask TransitionTask
-        {
-            get; private set;
-        }
-
         private void Awake()
         {
             InitializeViews();
@@ -83,11 +78,24 @@ namespace Core.UI
 
             if (!_isViewTransitionInProgress)
             {
-                TransitionTask = ProcessViewTransition();
+                ProcessViewTransition().Forget();
             }
         }
+
+        public IView GetView<T>() where T : IView
+        {
+            foreach (var map in _viewControllerMap)
+            {
+                if (map.Key is T)
+                {
+                    return map.Key;
+                }
+            }
+
+            return null;
+        }
         
-        private async UniTask ProcessViewTransition()
+        private async UniTaskVoid ProcessViewTransition()
         {
             while (_pendingControllers.Count > 0)
             {
@@ -130,7 +138,7 @@ namespace Core.UI
             }
         }
         
-        public async UniTask NavigateBack()
+        public async UniTaskVoid NavigateBack()
         {
             if (_controllerStack.Count > 0)
             {

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Autoplay.Interfaces;
 
@@ -6,16 +7,16 @@ namespace Project.Autoplay.Implementations
 {
     public class Command : ICommand
     {
-        private readonly Action _command;
+        private readonly Action _action;
 
-        public Command(Action command)
+        public Command(Action action)
         {
-            _command = command;
+            _action = action;
         }
         
-        UniTask ICommand.Execute()
+        UniTask ICommand.Execute(CancellationToken token)
         {
-            _command?.Invoke();
+            _action?.Invoke();
             
             return UniTask.CompletedTask;
         }
