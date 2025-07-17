@@ -50,10 +50,8 @@ MonoBehaviour:
   _pooledObjectType: 0
   _freeTimeout: 0
   _diceSettings: {fileID: 11400000, guid: ff338d69667be4b7abafd4513e50be33, type: 2}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  fallingColor: {r: 1, g: 0, b: 0, a: 1}
-  hitEffect: {fileID: 0}
-  hitSound: {fileID: 0}
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
+  _fallingColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!212 &7552586359950371598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -98,7 +96,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 11277a3f23988ec47908362d708edaa8, type: 3}
+  m_Sprite: {fileID: -3415312158800669560, guid: e44dac23c17cc430dbebbad0f75467d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
