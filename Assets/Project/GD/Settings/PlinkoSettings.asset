@@ -14,5 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StartBalance>k__BackingField: 1000
   <GameCost>k__BackingField: 100
-  <MultiplierPerHit>k__BackingField: 0.25
+  <BounceConfig>k__BackingField:
+    <GrowthType>k__BackingField: 1
+    _configs:
+    - <BounceCountRange>k__BackingField:
+        <Min>k__BackingField: 0
+        <Max>k__BackingField: 5
+      <MultiplierPerHit>k__BackingField: 0.25
+    - <BounceCountRange>k__BackingField:
+        <Min>k__BackingField: 5
+        <Max>k__BackingField: 10
+      <MultiplierPerHit>k__BackingField: 0.1
   <MultiplierPenaltyOnDiceLoss>k__BackingField: 0.5

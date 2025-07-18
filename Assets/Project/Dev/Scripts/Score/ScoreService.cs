@@ -7,9 +7,11 @@ using Project.Bounce.Containers;
 using Project.Bounce.Settings;
 using Project.Plinko.Interfaces;
 using Project.Plinko.Settings;
+using Project.Plinko.Settings.Configs.Type;
 using Project.Plinko.Types;
 using Project.Score.Interfaces;
 using R3;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -82,6 +84,42 @@ namespace Project.Score
             _hitCount.Value = 0;
             _multiplier.Value = 1f;
         }
+
+        private void CalculateMultiplier()
+        {
+            var bounceConfig = _plinkoSettings.BounceConfig;
+            var config = _plinkoSettings.BounceConfig.GetConfig(_hitCount.Value);
+
+            switch (bounceConfig.GrowthType)
+            {
+                case GrowthType.Additive:
+                    _multiplier.Value += config.MultiplierPerHit;
+                    break;
+                
+                case GrowthType.Multiplicative:
+                    _multiplier.Value += _multiplier.Value * config.MultiplierPerHit;
+                    break;
+                
+                default:
+                    Debug.LogError($"Not supported {nameof(GrowthType)} - {bounceConfig.GrowthType}");
+                    break;
+            }
+        }
+
+        private void OnDiceLost()
+        {
+            _lostDiceCount.Value++;
+            
+            if (_lostDiceCount.Value == 1)
+            {
+                _multiplier.Value *= _plinkoSettings.MultiplierPenaltyOnDiceLoss;
+            }
+
+            if (_lostDiceCount.Value >= _diceSpawnSettings.DiceCount)
+            {
+                _plinkoService.FailGame();
+            }
+        }
         
         private void OnPlinkoStateChanged(PlinkoStateType stateType)
         {
@@ -97,32 +135,30 @@ namespace Project.Score
         private void OnDiceAdded(CollectionAddEvent<PlinkoDice> addedDice)
         {
             addedDice.Value.Bounced += PlinkoDice_Bounced;
+            addedDice.Value.Destroyed += PlinkoDice_Destroyed;
         }
 
         private void OnDiceRemoved(CollectionRemoveEvent<PlinkoDice> removedDice)
         {
             removedDice.Value.Bounced -= PlinkoDice_Bounced;
-        }        
-        
+            removedDice.Value.Destroyed -= PlinkoDice_Destroyed;
+        }
+
         private void GapController_DiceFell(PlinkoDice dice)
         {
-            _lostDiceCount.Value++;
-            
-            if (_lostDiceCount.Value == 1)
-            {
-                _multiplier.Value *= _plinkoSettings.MultiplierPenaltyOnDiceLoss;
-            }
-
-            if (_lostDiceCount.Value >= _diceSpawnSettings.DiceCount)
-            {
-                _plinkoService.FailGame();
-            }
+            OnDiceLost();
         }
 
         private void PlinkoDice_Bounced()
         {
-            _multiplier.Value += _plinkoSettings.MultiplierPerHit;
+            CalculateMultiplier();
+            
             _hitCount.Value++;
+        }
+
+        private void PlinkoDice_Destroyed(PlinkoDice dice)
+        {
+            OnDiceLost();
         }
     }
 }

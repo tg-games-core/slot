@@ -1,15 +1,21 @@
 using System;
 using Core;
 using Project.Bounce.Settings;
+using R3;
 using UnityEngine;
 
 namespace Project.Bounce
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class PlinkoDice : PooledBehaviour
     {
         private const float FallThreshold = -5f;
+
+        private readonly ReactiveSubscribersContainer _reactiveContainer = new();
+        private readonly ReactiveProperty<int> _bounceCount = new();
         
         public event Action Bounced;
+        public event Action<PlinkoDice> Destroyed;
 
         [SerializeField]
         private DiceSettings _diceSettings;
@@ -25,11 +31,28 @@ namespace Project.Bounce
         private Rigidbody2D _rigidbody;
         private SpriteRenderer _spriteRenderer;
 
-        private void Start()
+        private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
+        private void OnEnable()
+        {
+            Bounced += PlinkoDice_Bounced;
+            
+            _reactiveContainer.Subscribe(_bounceCount, OnBounceCountChanged);
+        }
+        
+        private void OnDisable()
+        {
+            Bounced -= PlinkoDice_Bounced;
+            
+            _reactiveContainer.Dispose();
+        }
+
+        private void Start()
+        {
             if (_rigidbody != null)
             {
                 _rigidbody.mass = _diceSettings.Mass;
@@ -68,17 +91,6 @@ namespace Project.Bounce
             }
         }
 
-        private void CheckFallingState()
-        {
-            bool wasFalling = _isFalling;
-            _isFalling = transform.position.y < FallThreshold;
-
-            if (_isFalling != wasFalling && _spriteRenderer != null)
-            {
-                _spriteRenderer.color = _isFalling ? _fallingColor : _normalColor;
-            }
-        }
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (_rigidbody != null)
@@ -95,12 +107,42 @@ namespace Project.Bounce
                 Bounced?.Invoke();
             }
         }
-        
+
+        public override void SpawnFromPool()
+        {
+            base.SpawnFromPool();
+
+            _bounceCount.Value = 0;
+        }
+
+        private void CheckFallingState()
+        {
+            bool wasFalling = _isFalling;
+            _isFalling = transform.position.y < FallThreshold;
+
+            if (_isFalling != wasFalling && _spriteRenderer != null)
+            {
+                _spriteRenderer.color = _isFalling ? _fallingColor : _normalColor;
+            }
+        }
+
         public void DestroyDice()
         {
-            Debug.Log("Уничтожаем кубик: " + gameObject.name);
+            Destroyed?.Invoke(this);
+            
+            Free();
+        }
+
+        private void PlinkoDice_Bounced()
+        {
+            _bounceCount.Value++;
+        }
         
-            Destroy(gameObject);
+        private void OnBounceCountChanged(int bounceCount)
+        {
+            // GetVisualConfig
+            // var visualConfig = _diceSettings.VisualConfigs....
+            // ApplyVisualConfig(visualConfig);
         }
 
         private void OnDrawGizmosSelected()

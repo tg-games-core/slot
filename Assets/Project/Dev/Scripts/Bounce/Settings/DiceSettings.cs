@@ -46,5 +46,11 @@ namespace Project.Bounce.Settings
         {
             get; private set;
         }
+
+        [field: SerializeField, Header("Visual configs")]
+        public DiceVisualConfig[] VisualConfigs
+        {
+            get; private set;
+        }
     }
 }

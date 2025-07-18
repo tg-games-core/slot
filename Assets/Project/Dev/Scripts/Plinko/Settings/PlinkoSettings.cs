@@ -1,3 +1,4 @@
+using Project.Plinko.Settings.Configs;
 using UnityEngine;
 
 namespace Project.Plinko.Settings
@@ -18,7 +19,7 @@ namespace Project.Plinko.Settings
         }
         
         [field: SerializeField]
-        public float MultiplierPerHit
+        public BounceConfig BounceConfig
         {
             get; private set;
         }
