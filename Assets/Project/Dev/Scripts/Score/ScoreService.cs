@@ -105,6 +105,21 @@ namespace Project.Score
                     break;
             }
         }
+
+        private void OnDiceLost()
+        {
+            _lostDiceCount.Value++;
+            
+            if (_lostDiceCount.Value == 1)
+            {
+                _multiplier.Value *= _plinkoSettings.MultiplierPenaltyOnDiceLoss;
+            }
+
+            if (_lostDiceCount.Value >= _diceSpawnSettings.DiceCount)
+            {
+                _plinkoService.FailGame();
+            }
+        }
         
         private void OnPlinkoStateChanged(PlinkoStateType stateType)
         {
@@ -120,26 +135,18 @@ namespace Project.Score
         private void OnDiceAdded(CollectionAddEvent<PlinkoDice> addedDice)
         {
             addedDice.Value.Bounced += PlinkoDice_Bounced;
+            addedDice.Value.Destroyed += PlinkoDice_Destroyed;
         }
 
         private void OnDiceRemoved(CollectionRemoveEvent<PlinkoDice> removedDice)
         {
             removedDice.Value.Bounced -= PlinkoDice_Bounced;
-        }        
-        
+            removedDice.Value.Destroyed -= PlinkoDice_Destroyed;
+        }
+
         private void GapController_DiceFell(PlinkoDice dice)
         {
-            _lostDiceCount.Value++;
-            
-            if (_lostDiceCount.Value == 1)
-            {
-                _multiplier.Value *= _plinkoSettings.MultiplierPenaltyOnDiceLoss;
-            }
-
-            if (_lostDiceCount.Value >= _diceSpawnSettings.DiceCount)
-            {
-                _plinkoService.FailGame();
-            }
+            OnDiceLost();
         }
 
         private void PlinkoDice_Bounced()
@@ -147,7 +154,11 @@ namespace Project.Score
             CalculateMultiplier();
             
             _hitCount.Value++;
-            
+        }
+
+        private void PlinkoDice_Destroyed(PlinkoDice dice)
+        {
+            OnDiceLost();
         }
     }
 }
