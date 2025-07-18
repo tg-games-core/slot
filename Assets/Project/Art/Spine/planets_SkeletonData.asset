@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: planets_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: b36c2941279fb4b2f9c66d55f37cc9e9, type: 2}
+  - {fileID: 11400000, guid: 5f86f120660344245aab3170c06eda10, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 5729c61fd4a96485687bd6f3aaa7165c, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 1d0dd216604ad654eae76cf996ca036e, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0

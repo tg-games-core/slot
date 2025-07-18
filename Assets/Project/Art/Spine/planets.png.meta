@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 18fb0cb8643934fb9a44268162c8fc64
+guid: e8f36e3948d06f8459329921b7d19bba
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -20,9 +20,6 @@ TextureImporter:
   - first:
       213: 2059008038007185576
     second: planets_5
-  - first:
-      213: -1365969676855580635
-    second: planets_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -114,19 +111,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -135,9 +119,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 619
-        width: 580
-        height: 630
+        y: 464
+        width: 385
+        height: 390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +140,10 @@ TextureImporter:
       name: planets_1
       rect:
         serializedVersion: 2
-        x: 5
-        y: 2
-        width: 690
-        height: 627
+        x: 389
+        y: 465
+        width: 389
+        height: 385
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +162,10 @@ TextureImporter:
       name: planets_2
       rect:
         serializedVersion: 2
-        x: 584
-        y: 605
-        width: 567
-        height: 643
+        x: 780
+        y: 465
+        width: 385
+        height: 388
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,10 +184,10 @@ TextureImporter:
       name: planets_3
       rect:
         serializedVersion: 2
-        x: 1153
-        y: 590
-        width: 560
-        height: 597
+        x: 2
+        y: 2
+        width: 464
+        height: 460
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +206,10 @@ TextureImporter:
       name: planets_4
       rect:
         serializedVersion: 2
-        x: 1715
-        y: 595
-        width: 308
-        height: 326
+        x: 468
+        y: 2
+        width: 457
+        height: 461
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +228,10 @@ TextureImporter:
       name: planets_5
       rect:
         serializedVersion: 2
-        x: 705
+        x: 927
         y: 2
-        width: 605
-        height: 591
+        width: 383
+        height: 388
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,28 +242,6 @@ TextureImporter:
       bones: []
       spriteID: 8a0a717c6e0139c10800000000000000
       internalID: 2059008038007185576
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: planets_6
-      rect:
-        serializedVersion: 2
-        x: 1323
-        y: 2
-        width: 609
-        height: 563
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 528611de0d91b0de0800000000000000
-      internalID: -1365969676855580635
       vertices: []
       indices: 
       edges: []
@@ -304,7 +266,6 @@ TextureImporter:
       planets_3: 4661003932267396463
       planets_4: 6997417702128964408
       planets_5: 2059008038007185576
-      planets_6: -1365969676855580635
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
