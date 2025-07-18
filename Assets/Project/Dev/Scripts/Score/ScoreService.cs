@@ -7,9 +7,11 @@ using Project.Bounce.Containers;
 using Project.Bounce.Settings;
 using Project.Plinko.Interfaces;
 using Project.Plinko.Settings;
+using Project.Plinko.Settings.Configs.Type;
 using Project.Plinko.Types;
 using Project.Score.Interfaces;
 using R3;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -82,6 +84,27 @@ namespace Project.Score
             _hitCount.Value = 0;
             _multiplier.Value = 1f;
         }
+
+        private void CalculateMultiplier()
+        {
+            var bounceConfig = _plinkoSettings.BounceConfig;
+            var config = _plinkoSettings.BounceConfig.GetConfig(_hitCount.Value);
+
+            switch (bounceConfig.GrowthType)
+            {
+                case GrowthType.Additive:
+                    _multiplier.Value += config.MultiplierPerHit;
+                    break;
+                
+                case GrowthType.Multiplicative:
+                    _multiplier.Value += _multiplier.Value * config.MultiplierPerHit;
+                    break;
+                
+                default:
+                    Debug.LogError($"Not supported {nameof(GrowthType)} - {bounceConfig.GrowthType}");
+                    break;
+            }
+        }
         
         private void OnPlinkoStateChanged(PlinkoStateType stateType)
         {
@@ -121,8 +144,10 @@ namespace Project.Score
 
         private void PlinkoDice_Bounced()
         {
-            _multiplier.Value += _plinkoSettings.MultiplierPerHit;
+            CalculateMultiplier();
+            
             _hitCount.Value++;
+            
         }
     }
 }
