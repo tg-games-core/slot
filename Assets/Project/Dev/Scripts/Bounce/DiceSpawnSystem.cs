@@ -62,7 +62,7 @@ namespace Project.Bounce
         {
             for (int i = 0; i < _diceSpawnSettings.DiceCount; i++)
             {
-                var dice = _poolSystem.Get<PlinkoDice>(_diceSpawnSettings.Dice, _spawnPoint.position,
+                var dice = _poolSystem.Get<PlinkoDice>(_diceSpawnSettings.GetDice(i), _spawnPoint.position,
                     Quaternion.identity);
             
                 _diceContainer.RegisterBouncingDice(dice);

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02ae8a03f914d4fa4df872ed4cda9a4, type: 3}
   m_Name: DiceSpawnSettings
   m_EditorClassIdentifier: 
-  <Dice>k__BackingField: {fileID: -1332213916794807366, guid: ba5dae16c7e8f4b668d4fc533fdc756e, type: 3}
+  _dices:
+  - {fileID: -1332213916794807366, guid: ba5dae16c7e8f4b668d4fc533fdc756e, type: 3}
   <DiceCount>k__BackingField: 2
   <SpawnInterval>k__BackingField: 2

@@ -5,11 +5,8 @@ namespace Project.Bounce.Settings
     [CreateAssetMenu(fileName = "DiceSpawnSettings", menuName = "Settings/InGame/DiceSpawnSettings", order = 0)]
     public class DiceSpawnSettings : ScriptableObject
     {
-        [field: SerializeField]
-        public PlinkoDice Dice
-        {
-            get; private set;
-        }
+        [SerializeField]
+        public PlinkoDice[] _dices;
 
         [field: SerializeField, Header("Spawn Settings")]
         public int DiceCount
@@ -21,6 +18,11 @@ namespace Project.Bounce.Settings
         public float SpawnInterval
         {
             get; private set;
+        }
+
+        public PlinkoDice GetDice(int index)
+        {
+            return _dices[index % _dices.Length];
         }
     }
 }
