@@ -1,9 +1,11 @@
 using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using VContainer;
 
 namespace Core
 {
+    [Preserve]
     public class SceneLoadingService
     {
         public event Action LoadingStarted;
