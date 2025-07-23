@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Project.Plinko.Settings.Configs.Type;
 using UnityEngine;
 
 namespace Project.Plinko.Settings.Configs
@@ -8,12 +7,6 @@ namespace Project.Plinko.Settings.Configs
     [Serializable]
     public class BounceConfig
     {
-        [field: SerializeField]
-        public GrowthType GrowthType
-        {
-            get; private set;
-        }
-
         [SerializeField]
         private MultiplierGrowthConfig[] _configs;
 

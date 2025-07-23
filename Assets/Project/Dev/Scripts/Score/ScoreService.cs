@@ -87,10 +87,9 @@ namespace Project.Score
 
         private void CalculateMultiplier()
         {
-            var bounceConfig = _plinkoSettings.BounceConfig;
             var config = _plinkoSettings.BounceConfig.GetConfig(_hitCount.Value);
 
-            switch (bounceConfig.GrowthType)
+            switch (config.GrowthType)
             {
                 case GrowthType.Additive:
                     _multiplier.Value += config.MultiplierPerHit;
@@ -101,7 +100,7 @@ namespace Project.Score
                     break;
                 
                 default:
-                    Debug.LogError($"Not supported {nameof(GrowthType)} - {bounceConfig.GrowthType}");
+                    Debug.LogError($"Not supported {nameof(GrowthType)} - {config.GrowthType}");
                     break;
             }
         }
