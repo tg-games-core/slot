@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dices:
   - {fileID: -1332213916794807366, guid: ba5dae16c7e8f4b668d4fc533fdc756e, type: 3}
+  - {fileID: -1332213916794807366, guid: b0751213f6b539c4599cac5bfa8a308c, type: 3}
   <DiceCount>k__BackingField: 2
   <SpawnInterval>k__BackingField: 2
