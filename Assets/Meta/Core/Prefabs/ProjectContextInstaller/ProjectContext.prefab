@@ -48,44 +48,14 @@ MonoBehaviour:
     TypeName: 
   autoRun: 0
   autoInjectGameObjects: []
-  <SettingsAssets>k__BackingField:
-  - m_AssetGUID: 49e5be9dcc7e240c8b97d34c3e59daa9
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: f73ce0a7fa5e94d00b6b3dcad7cfb5fb
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: cc4b73bd237ef47c4a736a18d3ebbc8d
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 2a5afd37a7c264c3d9ab8a711d7305a5
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: ff8b82eacb783457e902207c9fe58cc5
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 374761a9cc8694efa95f07a4cd62e1af
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: ce2d08b8870f84947bef75c02b9990fc
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 06c514dab2f4c4115be9c7f96357ec86
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
+  <Settings>k__BackingField:
+  - {fileID: 11400000, guid: 49e5be9dcc7e240c8b97d34c3e59daa9, type: 2}
+  - {fileID: 11400000, guid: f73ce0a7fa5e94d00b6b3dcad7cfb5fb, type: 2}
+  - {fileID: 11400000, guid: cc4b73bd237ef47c4a736a18d3ebbc8d, type: 2}
+  - {fileID: 11400000, guid: 0afaefbd233164ae185ac9e699a88077, type: 2}
+  - {fileID: 11400000, guid: 2a5afd37a7c264c3d9ab8a711d7305a5, type: 2}
+  - {fileID: 11400000, guid: ff8b82eacb783457e902207c9fe58cc5, type: 2}
+  - {fileID: 11400000, guid: 374761a9cc8694efa95f07a4cd62e1af, type: 2}
+  - {fileID: 11400000, guid: ff338d69667be4b7abafd4513e50be33, type: 2}
+  - {fileID: 11400000, guid: ce2d08b8870f84947bef75c02b9990fc, type: 2}
+  - {fileID: 11400000, guid: 06c514dab2f4c4115be9c7f96357ec86, type: 2}

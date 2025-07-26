@@ -6,19 +6,16 @@ namespace Core.Bootstrap.States
     {
         private readonly GameStateMachine _stateMachine;
         private readonly ProjectContextInstaller _projectContextInstaller;
-        private readonly IAssetBootstrapper _assetBootstrapper;
 
-        public RegisterState(GameStateMachine stateMachine, ProjectContextInstaller projectContextInstaller, 
-            IAssetBootstrapper assetBootstrapper)
+        public RegisterState(GameStateMachine stateMachine, ProjectContextInstaller projectContextInstaller)
         {
             _stateMachine = stateMachine;
             _projectContextInstaller = projectContextInstaller;
-            _assetBootstrapper = assetBootstrapper;
         }
         
         void IState.Enter()
         {
-            _projectContextInstaller.RegisterAll(_assetBootstrapper);
+            _projectContextInstaller.RegisterAll();
             
             _stateMachine.Enter<ResolveState>();
         }

@@ -8,7 +8,7 @@ using Core.Data;
 using Core.Services;
 using Core.Services.Implementations;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
+//using UnityEngine.AddressableAssets;
 using VContainer;
 using VContainer.Unity;
 #if FORCE_DEBUG
@@ -23,17 +23,13 @@ namespace Core
         private readonly List<Type> _services = new();
 
         [field: SerializeField, Header("Settings")]
-        public AssetReference[] SettingsAssets
+        public ScriptableObject[] Settings
         {
             get; private set;
         }
 
-        private IAssetBootstrapper _assetBootstrapper;
-        
-        public void RegisterAll(IAssetBootstrapper assetBootstrapper)
+        public void RegisterAll()
         {
-            _assetBootstrapper = assetBootstrapper;
-            
             Build();
         }
 
@@ -59,7 +55,7 @@ namespace Core
 
         private void BindSettings(IContainerBuilder builder)
         {
-            foreach (var settings in _assetBootstrapper.GetLoadedSettings())
+            foreach (var settings in Settings)
             {
                 builder.RegisterInstance(settings).AsSelf();
             }
@@ -75,19 +71,14 @@ namespace Core
 
         private void BindManagers(IContainerBuilder builder)
         {
-            RegisterManager<ObjectPoolingSystem, IPoolSystem>(builder);
-            RegisterManager<AudioSystem, IAudioSystem>(builder);
-            RegisterManager<ParticlePoolSystem, IParticleSystem>(builder);
-            RegisterManager<OverlayNotificationSystem>(builder);
-            RegisterManager<UIFadeSystem>(builder);
+            RegisterManager<ObjectPoolingSystem, IPoolSystem>(builder, ObjectPoolingSystem.GetManager);
+            RegisterManager<AudioSystem, IAudioSystem>(builder, AudioSystem.GetManager);
+            RegisterManager<ParticlePoolSystem, IParticleSystem>(builder, ParticlePoolSystem.GetManager);
+            RegisterManager<OverlayNotificationSystem>(builder, OverlayNotificationSystem.GetManager);
+            RegisterManager<UIFadeSystem>(builder, UIFadeSystem.GetManager);
             
 #if UNITY_WEBGL
-            RegisterManager<EventDispatcher>(builder);
-#endif
-
-#if FORCE_DEBUG
-            builder.Register<CustomDebugMenu>(Lifetime.Singleton);
-            builder.RegisterEntryPoint<DebugMenu>();
+            RegisterManager<EventDispatcher>(builder, EventDispatcher.GetManager);
 #endif
         }
 
@@ -111,18 +102,16 @@ namespace Core
             builder.Register<RuntimeRegistry>(Lifetime.Singleton).AsImplementedInterfaces();
         }
 
-        private void RegisterManager<TManager>(IContainerBuilder builder)
+        private void RegisterManager<TManager>(IContainerBuilder builder, TManager managerPrefab)
             where TManager : RuntimeComponent<TManager>
         {
-            var manager = _assetBootstrapper.GetSystem<TManager>();
-            builder.RegisterComponentInNewPrefab(manager, Lifetime.Singleton).DontDestroyOnLoad().AsSelf();
+            builder.RegisterComponentInNewPrefab(managerPrefab, Lifetime.Singleton).DontDestroyOnLoad().AsSelf();
         }
-
-        private void RegisterManager<TManager, TSystem>(IContainerBuilder builder)
+        
+        private void RegisterManager<TManager, TSystem>(IContainerBuilder builder, TManager managerPrefab)
             where TManager : RuntimeComponent<TManager>
         {
-            var manager = _assetBootstrapper.GetSystem<TManager>();
-            builder.RegisterComponentInNewPrefab(manager, Lifetime.Singleton).DontDestroyOnLoad().AsSelf()
+            builder.RegisterComponentInNewPrefab(managerPrefab, Lifetime.Singleton).DontDestroyOnLoad().AsSelf()
                 .As<TSystem>();
         }
     }

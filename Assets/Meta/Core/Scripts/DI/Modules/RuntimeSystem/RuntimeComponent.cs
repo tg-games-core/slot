@@ -10,6 +10,12 @@ namespace Core
             get => $"{typeof(T).Name}";
         }
 
+        public static T GetManager
+        {
+            get { return Resources.Load<T>($"DIManagers/{typeof(T).Name}"); }
+        }
+
+
         protected virtual void Awake()
         {
             Initialize();

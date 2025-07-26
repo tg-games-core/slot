@@ -7,15 +7,14 @@ namespace Core.Bootstrap.States
         private readonly GameStateMachine _stateMachine;
         private readonly IAssetBootstrapper _assetBootstrapper;
 
-        public WarmUpState(GameStateMachine stateMachine, IAssetBootstrapper assetBootstrapper)
+        public WarmUpState(GameStateMachine stateMachine)
         {
             _stateMachine = stateMachine;
-            _assetBootstrapper = assetBootstrapper;
         }
         
         async void IState.Enter()
         {
-            await _assetBootstrapper.Initialize();
+            //await _assetBootstrapper.Initialize();
             
             _stateMachine.Enter<RegisterState>();
         }

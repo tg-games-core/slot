@@ -23,8 +23,8 @@ namespace Core.Bootstrap
         {
             DontDestroyOnLoad(gameObject);
 
-            var assetBootstrapper = new AddressableAssetBootstrapper(_projectContextInstaller.SettingsAssets);
-            var stateMachine = new GameStateMachine(_projectContextInstaller, this, assetBootstrapper, _loadingProgress,
+            //var assetBootstrapper = new AddressableAssetBootstrapper(_projectContextInstaller.SettingsAssets);
+            var stateMachine = new GameStateMachine(_projectContextInstaller, this, _loadingProgress,
                 _canvasGroups, _loadingSettings);
             
             stateMachine.Enter<SetupProjectState>();

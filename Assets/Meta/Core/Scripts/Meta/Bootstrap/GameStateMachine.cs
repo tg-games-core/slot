@@ -14,15 +14,14 @@ namespace Core.Bootstrap
         
         private IExitableState _activeState;
 
-        public GameStateMachine(ProjectContextInstaller installer, Bootstrapper bootstrapper,
-            IAssetBootstrapper assetBootstrapper, SlicedFilledImage loadingProgress, CanvasGroup[] canvasGroups,
+        public GameStateMachine(ProjectContextInstaller installer, Bootstrapper bootstrapper, SlicedFilledImage loadingProgress, CanvasGroup[] canvasGroups,
             LoadingSettings loadingSettings)
         {
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(SetupProjectState)] = new SetupProjectState(this),
-                [typeof(WarmUpState)] = new WarmUpState(this, assetBootstrapper),
-                [typeof(RegisterState)] = new RegisterState(this, installer, assetBootstrapper),
+                [typeof(WarmUpState)] = new WarmUpState(this),
+                [typeof(RegisterState)] = new RegisterState(this, installer),
                 [typeof(ResolveState)] = new ResolveState(this, installer),
                 [typeof(LoadState)] = new LoadState(this, loadingSettings, loadingProgress),
                 [typeof(GameRunnerState)] = new GameRunnerState(loadingSettings, canvasGroups, bootstrapper),
